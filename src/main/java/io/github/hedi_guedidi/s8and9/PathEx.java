@@ -32,15 +32,16 @@ public class PathEx {
 		//helloBye(Path.of("test2/asubfolder/"));
 		Map<String, String> env = new HashMap<>(); 
 		Path path=Path.of("myfolder/zipfstest15948.zip");
-		
-        Files.createFile(path);
+		env.put("create", "true");
+
         URI uritemp=path.toUri();
         URI uri = URI.create("jar:"+uritemp.toString());
         
        try (FileSystem fs = FileSystems.newFileSystem(uri, env)) {
-    	   Path path1 =fs.getPath("myfolder/");
+    	   Path path1 =fs.getPath(".");
     	   helloBye(path1);            
         } 
+       
     }
 	}
 
